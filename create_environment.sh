@@ -32,3 +32,5 @@ mkdir -p "$main_dir/app"
 mkdir -p "$main_dir/modules"
 mkdir -p "$main_dir/assets"
 mkdir -p "$main_dir/config"
+
+# Adding file for those subdirectories
