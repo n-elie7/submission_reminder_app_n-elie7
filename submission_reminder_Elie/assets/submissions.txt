@@ -1,0 +1,15 @@
+student, assignment, submission status
+Chinemerem, Shell Navigation, not submitted
+Chiagoziem, Git, submitted
+Divine, Shell Navigation, not submitted
+Anissa, Shell Basics, submitted
+Emmanuel, Docker Basics, submitted
+Grace, Linux Commands, not submitted
+Isaac, Python Scripting, pending
+Jennifer, Database Design, submitted
+Kevin, Web Development, not submitted
+Linda, API Integration, submitted
+Moses, Cloud Computing, pending
+Nancy, Cybersecurity, submitted
+Oliver, DevOps Tools, not submitted
+Patricia, Kubernetes, submitted
