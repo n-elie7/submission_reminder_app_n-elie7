@@ -2,8 +2,11 @@
 
 # This script updates the assignment name in config.env and reruns the application
 
+# Get the directory where this config.env is located
+submission_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Define the path to config.env
-config_file="config/config.env"
+config_file="$(find "$submission_dir" -type f -path "*/config/config.env" | head -n 1)"
 
 # Check if config file exists
 if [ ! -f "$config_file" ]; then
@@ -13,8 +16,7 @@ if [ ! -f "$config_file" ]; then
 fi
 
 # Asking user for new assignment name
-echo -n "Enter the new assignment name: " 
-read -p new_assignment
+read -p "Enter the new assignment name: " new_assignment
 
 # Validate input
 if [ -z "$new_assignment" ]; then
