@@ -28,7 +28,7 @@ echo
 echo "Updating assignment in configuration file..."
 
 # Use sed to replace the ASSIGNMENT value in config.env
-sed -i "s|^ASSIGNMENT=.*|ASSIGNMENT=\"$new_assignment\"|" "$config_file"
+sed -i "" "s|^ASSIGNMENT=.*|ASSIGNMENT=\"$new_assignment\"|" "$config_file"
 
 # Check if sed was successful
 if [ $? -eq 0 ]; then
