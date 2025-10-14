@@ -11,9 +11,9 @@ if [ -z "$name" ]; then
 fi
 
 # Creating main_dir which is submission_reminder_{name}
-main_dir="submission_reminder_${name}"
+submission_dir="submission_reminder_${name}"
 
-if [ -d "$main_dir" ]; then
+if [ -d "$submission_dir" ]; then
     # Ask if they want to overwrite if the script is being run many times 
     echo "Warning: Directory already exists. Do you want to overwrite it? (y/n)"
     read -p "Choice: " choice
@@ -22,16 +22,16 @@ if [ -d "$main_dir" ]; then
         echo "Setup cancelled."
         exit 0
     fi
-    rm -rf "$main_dir"
+    rm -rf "$submission_dir"
 fi
 
-mkdir -p "$main_dir"
+mkdir -p "$submission_dir"
 
 # Creating subdirectories
-mkdir -p "$main_dir/app"
-mkdir -p "$main_dir/modules"
-mkdir -p "$main_dir/assets"
-mkdir -p "$main_dir/config"
+mkdir -p "$submission_dir/app"
+mkdir -p "$submission_dir/modules"
+mkdir -p "$submission_dir/assets"
+mkdir -p "$submission_dir/config"
 
 # Adding file for those subdirectories
 
@@ -39,7 +39,7 @@ mkdir -p "$main_dir/config"
 
 echo "Creating config.env..."
 
-cat > "$main_dir/config/config.env" << 'EOF'
+cat > "$submission_dir/config/config.env" << 'EOF'
 # This is the config file
 ASSIGNMENT="Shell Navigation"
 DAYS_REMAINING=2
@@ -49,7 +49,7 @@ EOF
 
 echo "Creating functions.sh..."
 
-cat > "$main_dir/modules/functions.sh" << 'EOF'
+cat > "$submission_dir/modules/functions.sh" << 'EOF'
 #!/bin/bash
 
 # Function to read submissions file and output students who have not submitted
@@ -75,7 +75,7 @@ EOF
 # Creating & Adding content of reminder.sh file
 echo "Creating reminder.sh..."
 
-cat > "$main_dir/app/reminder.sh" << 'EOF'
+cat > "$submission_dir/app/reminder.sh" << 'EOF'
 #!/bin/bash
 
 # Source environment variables and helper functions
@@ -96,7 +96,7 @@ EOF
 # Creating & Adding content of submissions.txt file with sample data and 5 additional records
 echo "Creating submissions.txt..."
 
-cat > "$main_dir/assets/submissions.txt" << 'EOF'
+cat > "$submission_dir/assets/submissions.txt" << 'EOF'
 student, assignment, submission status
 Chinemerem, Shell Navigation, not submitted
 Chiagoziem, Git, submitted
