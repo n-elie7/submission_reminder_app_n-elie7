@@ -113,3 +113,20 @@ Nancy, Cybersecurity, submitted
 Oliver, DevOps Tools, not submitted
 Patricia, Kubernetes, submitted
 EOF
+
+# Creating startup.sh file
+
+echo "Creating startup.sh"
+
+cat > "$submission_dir/startup.sh" << 'EOF'
+#!/bin/bash
+
+# Running Submission Reminder App
+echo "Starting submission reminder app"
+bash "$submission_dir/app/reminder.sh"
+EOF
+
+# Make script files executable
+chmod +x $submission_dir/app/*.sh
+chmod +x $submission_dir/modules/*.sh
+chmod +x $submission_dir/*.sh
