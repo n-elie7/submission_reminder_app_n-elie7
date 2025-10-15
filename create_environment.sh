@@ -154,8 +154,14 @@ fi
 echo "Loading reminder application..."
 echo
 
+# Change to $submission_dir first for reminder.sh
+# To find functions.sh & config.env
+# This will solve an error "No such file or directory" for those files
+
+cd "$submission_dir"
+
 # Execute the reminder.sh script
-"$reminder_file"
+bash $reminder_file
 
 # Check exit status to determine if it succeed or not.
 if [ $? -eq 0 ]; then

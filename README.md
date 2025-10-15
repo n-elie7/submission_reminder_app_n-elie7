@@ -354,3 +354,11 @@ cd ..
 rm -rf submission_reminder_{yourName}
 ./create_environment.sh
 ```
+
+---
+
+<div align="center">
+
+### Thank You! 🙏
+
+</div>
