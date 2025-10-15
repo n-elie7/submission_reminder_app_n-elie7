@@ -45,6 +45,8 @@ ASSIGNMENT="Shell Navigation"
 DAYS_REMAINING=2
 EOF
 
+echo "config.env file created successfully"
+
 # Creating & Adding content for functions.sh
 
 echo "Creating functions.sh..."
@@ -72,6 +74,8 @@ function check_submissions {
 }
 EOF
 
+echo "functions.sh file created successfully"
+
 # Creating & Adding content of reminder.sh file
 echo "Creating reminder.sh..."
 
@@ -93,6 +97,8 @@ echo "--------------------------------------------"
 check_submissions $submissions_file
 EOF
 
+echo "reminder.sh file created successfully"
+
 # Creating & Adding content of submissions.txt file with sample data and 5 additional records
 echo "Creating submissions.txt..."
 
@@ -113,6 +119,8 @@ Nancy, Cybersecurity, submitted
 Oliver, DevOps Tools, not submitted
 Patricia, Kubernetes, submitted
 EOF
+
+echo "submissions.txt file created successfully"
 
 # Creating startup.sh file
 
@@ -146,8 +154,14 @@ fi
 echo "Loading reminder application..."
 echo
 
+# Change to $submission_dir first for reminder.sh
+# To find functions.sh & config.env
+# This will solve an error "No such file or directory" for those files
+
+cd "$submission_dir"
+
 # Execute the reminder.sh script
-"$reminder_file"
+bash $reminder_file
 
 # Check exit status to determine if it succeed or not.
 if [ $? -eq 0 ]; then
@@ -159,6 +173,8 @@ else
     exit 1
 fi
 EOF
+
+echo "startup.sh file created successfully"
 
 # Make script files executable
 chmod +x $submission_dir/app/*.sh
