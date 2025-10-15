@@ -5,8 +5,9 @@
 # Get the directory where this config.env is located
 submission_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Define the path to config.env
+# Define the path to config.env & startup.sh files
 config_file="$(find "$submission_dir" -type f -path "*/config/config.env" | head -n 1)"
+startup_file="$(find "$submission_dir" -type f -name "startup.sh" | head -n 1)"
 
 # Check if config file exists
 if [ ! -f "$config_file" ]; then
@@ -42,12 +43,12 @@ fi
 echo "Restarting Application / rerun startup.sh"
 
 # Check if startup.sh exists
-if [ ! -f "startup.sh" ]; then
+if [ ! -f "$startup_file" ]; then
     echo "Error: startup.sh not found!"
     exit 1
 fi
 
 # Run the startup script
-./startup.sh
+bash $startup_file
 
 echo "  Configuration Update Complete"
