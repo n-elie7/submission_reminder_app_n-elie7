@@ -29,7 +29,25 @@ echo
 echo "Updating assignment in configuration file..."
 
 # Use sed to replace the ASSIGNMENT value in config.env
-sed -i "" "s|^ASSIGNMENT=.*|ASSIGNMENT=\"$new_assignment\"|" "$config_file"
+# It turn's out its working on macos only let's make it robust to detect 
+# OS first and then use the correct sed command
+
+# detect operating system
+OS_TYPE=$(uname -s)
+
+# Use different sed syntax based on OS
+if [[ "$OS_TYPE" == "Darwin" ]]; then
+    # macOS (sed) - requires empty string for no backup
+    sed -i '' "s|^ASSIGNMENT=.*|ASSIGNMENT=\"$new_assignment\"|" "$config_file"
+elif [[ "$OS_TYPE" == "Linux" ]]; then
+    # Linux (GNU sed)
+    sed -i "s|^ASSIGNMENT=.*|ASSIGNMENT=\"$new_assignment\"|" "$config_file"
+else
+    # Fallback for other Unix systems - create temp file
+    sed "s|^ASSIGNMENT=.*|ASSIGNMENT=\"$new_assignment\"|" "$config_file" > "${config_file}.tmp"
+    mv "${config_file}.tmp" "$config_file"
+fi
+
 
 # Check if sed was successful
 if [ $? -eq 0 ]; then
